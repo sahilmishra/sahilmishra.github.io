@@ -1,3 +1,6 @@
+body {
+	font-family:monospace;
+}
 #bottom{
 	position:absolute;
 	bottom:0;
