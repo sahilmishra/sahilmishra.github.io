@@ -5,7 +5,6 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-<<<<<<< HEAD
 		<div class="window">
 			<center>
 				<h2>Sahil Mishra's Personal Website</h2>
@@ -21,19 +20,5 @@
 		<div id="bottom">
 			<p>DARKNESS CANNOT DRIVE OUT DARKNESS ★彡</p>
 		</div>
-=======
-	<ul>
-		<li>Sahil Mishra's Personal Website</li>
-		<ul>
-			<li>UMass Amherst 2020</li>
-			<li><a href="assets/Resume.pdf">Resume</a></li>
-			<li><a href="https://github.com/slymodi">Github</a></li>
-		</ul>
-		<li><a href="philosophy.html">Philosophy</a></li>
-	</ul>
-	<div id="bottom">
-		<p>DARKNESS CANNOT DRIVE OUT DARKNESS ★彡</p>
-	</div>
->>>>>>> b05acb37b9fbed48b2efe3f343db459ce14c2dc5
 	</body>
 </html>
