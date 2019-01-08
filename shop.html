@@ -38,8 +38,9 @@ document.getElementById('customButton').addEventListener('click', function(e) {
     // Open Checkout with further options:
     handler.open({
           name: 'Sahil Mishra Shirt',
-          description: '2 widgets',
-          amount: 2000
+          description: 'Year of the Brown Boy Shirt',
+          amount: 2000,
+          shippingAddress: true,
         });
     e.preventDefault();
 });
