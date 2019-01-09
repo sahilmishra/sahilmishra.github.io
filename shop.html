@@ -9,17 +9,28 @@
      <img src="assets/yotbb.png"></img>
      <h1>YEAR OF THE BROWN BOY T SHIRT</h1>
      <h2>$20</h2>
+
+     <select id="size">
+       <option value="xs">XS</option>
+       <option value="s">S</option>
+       <option value="m">M</option>
+       <option value="l">L</option>
+       <option value="xl">XL</option>
+       <option value="xxl">XXL</option>
+       <option value="xxxl">XXXL</option>
+     </select>
       <button id="customButton">Purchase</button>
   <script>
     var handler = StripeCheckout.configure({
-        key: 'pk_live_kPKrtWR4awNwfOneKnEcoST1',
+        //key: 'pk_live_kPKrtWR4awNwfOneKnEcoST1',
+        key: 'pk_test_lJSpWSRO5NcTrkcwiZYYbc02'
         image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
         locale: 'auto',
         token: function(token) {
               // You can access the token ID with `token.id`.
               // Get the token ID to your server-side code for use.
           console.log(token);
-          $.post("https://stormy-beyond-93975.herokuapp.com/"+token.id+"/"+token.email,token,function(result){
+          $.post("https://stormy-beyond-93975.herokuapp.com/"+token.id+"/"+token.email+"/"+$("#size option:selected").text(),token,function(result){
             window.location.href = "thankyou";
           });
 
