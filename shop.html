@@ -19,7 +19,7 @@
               // You can access the token ID with `token.id`.
               // Get the token ID to your server-side code for use.
           console.log(token);
-          $.post("https://stormy-beyond-93975.herokuapp.com/",token,function(result){
+          $.post("https://stormy-beyond-93975.herokuapp.com/"+token.id+"/"+token.email,token,function(result){
 
             console.log(result);
           });
