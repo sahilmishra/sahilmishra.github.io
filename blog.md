@@ -5,10 +5,13 @@ permalink: /blog
 by: sahil mishra
 ---
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+<link rel="stylesheet" href="assets/css/style.css" >
+<div class="wrapper">
+    <ul>
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
