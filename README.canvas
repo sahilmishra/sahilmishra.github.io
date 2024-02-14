@@ -1,12 +1,14 @@
 {
 	"nodes":[
-		{"id":"a57d08d647fc18d1","x":-273,"y":-453,"width":373,"height":173,"type":"text","text":"# Purpose of this document:\nprovide a meta level 'readme' where notes are taken inline."},
-		{"id":"f6ec6b94ef75b3d0","x":-331,"y":858,"width":400,"height":400,"type":"file","file":"Projects/Programming/sahilmishra.github.io/assets/Resume.pdf"},
-		{"id":"8d2d39971f13e1f7","x":-192,"y":-175,"width":780,"height":720,"type":"link","url":"https://sahilmishra.github.io/"},
-		{"id":"61a677c110e1067c","x":-880,"y":520,"width":400,"height":580,"type":"link","url":"https://github.com/sahilkmishra"},
-		{"id":"bb53723fb4e7a996","x":-631,"y":-453,"width":303,"height":702,"type":"text","text":"# TO DO\n- [ ] write more\n- [ ] add project page/integrate with blog\n- [ ] "},
-		{"id":"1eccc6a4db2ce6b1","x":680,"y":-175,"width":840,"height":720,"type":"link","url":"https://sahilmishra.github.io/blog"},
-		{"id":"4d675435f610bedf","x":1640,"y":-239,"width":805,"height":848,"type":"link","url":"https://sahilmishra.github.io/2024/02/12/hello.html"}
+		{"id":"a57d08d647fc18d1","type":"text","text":"# Purpose of this document:\nprovide a meta level 'readme' where notes are taken inline.","x":-273,"y":-453,"width":373,"height":173},
+		{"id":"f6ec6b94ef75b3d0","type":"file","file":"Projects/Programming/sahilmishra.github.io/assets/Resume.pdf","x":-331,"y":858,"width":400,"height":400},
+		{"id":"8d2d39971f13e1f7","type":"link","url":"https://sahilmishra.github.io/","x":-192,"y":-175,"width":780,"height":720},
+		{"id":"61a677c110e1067c","type":"link","url":"https://github.com/sahilkmishra","x":-880,"y":520,"width":400,"height":580},
+		{"id":"1eccc6a4db2ce6b1","type":"link","url":"https://sahilmishra.github.io/blog","x":680,"y":-175,"width":840,"height":720},
+		{"id":"4d675435f610bedf","type":"link","url":"https://sahilmishra.github.io/2024/02/12/hello.html","x":1640,"y":-239,"width":840,"height":959},
+		{"id":"bb53723fb4e7a996","type":"text","text":"# TO DO\n- [ ] write more\n- [ ] add project page/integrate with blog\n- [ ] ","x":-800,"y":-453,"width":439,"height":159},
+		{"id":"bb5e7d13fbb3aaab","type":"text","text":"add title?","x":786,"y":-355,"width":250,"height":60},
+		{"id":"3979611be86a6f9c","type":"text","text":"more fun things ?","x":1066,"y":-310,"width":250,"height":60}
 	],
 	"edges":[
 		{"id":"e29de11021c6cbca","fromNode":"8d2d39971f13e1f7","fromSide":"left","toNode":"61a677c110e1067c","toSide":"right"},
