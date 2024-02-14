@@ -8,12 +8,14 @@
 		{"id":"4d675435f610bedf","type":"link","url":"https://sahilmishra.github.io/2024/02/12/hello.html","x":1640,"y":-239,"width":840,"height":959},
 		{"id":"bb53723fb4e7a996","type":"text","text":"# TO DO\n- [ ] write more\n- [ ] add project page/integrate with blog\n- [ ] ","x":-800,"y":-453,"width":439,"height":159},
 		{"id":"bb5e7d13fbb3aaab","type":"text","text":"add title?","x":786,"y":-355,"width":250,"height":60},
-		{"id":"3979611be86a6f9c","type":"text","text":"more fun things ?","x":1066,"y":-310,"width":250,"height":60}
+		{"id":"3979611be86a6f9c","type":"text","text":"more fun things ?","x":1066,"y":-310,"width":250,"height":60},
+		{"id":"c0a8f20c000b2eb0","x":-1060,"y":-240,"width":699,"height":640,"type":"link","url":"https://github.com/sahilmishra/sahilmishra.github.io/actions"}
 	],
 	"edges":[
 		{"id":"e29de11021c6cbca","fromNode":"8d2d39971f13e1f7","fromSide":"left","toNode":"61a677c110e1067c","toSide":"right"},
 		{"id":"587296c378f668ff","fromNode":"8d2d39971f13e1f7","fromSide":"bottom","toNode":"f6ec6b94ef75b3d0","toSide":"top"},
 		{"id":"e017df28ead8af81","fromNode":"8d2d39971f13e1f7","fromSide":"right","toNode":"1eccc6a4db2ce6b1","toSide":"left"},
-		{"id":"aa1feb25790c6201","fromNode":"1eccc6a4db2ce6b1","fromSide":"right","toNode":"4d675435f610bedf","toSide":"left"}
+		{"id":"aa1feb25790c6201","fromNode":"1eccc6a4db2ce6b1","fromSide":"right","toNode":"4d675435f610bedf","toSide":"left"},
+		{"id":"598c1246dbad648c","fromNode":"c0a8f20c000b2eb0","fromSide":"right","toNode":"8d2d39971f13e1f7","toSide":"left"}
 	]
 }
