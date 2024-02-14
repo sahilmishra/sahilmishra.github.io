@@ -9,7 +9,8 @@
 		{"id":"bb53723fb4e7a996","type":"text","text":"# TO DO\n- [ ] write more\n- [ ] add project page/integrate with blog\n- [ ] ","x":-800,"y":-453,"width":439,"height":159},
 		{"id":"bb5e7d13fbb3aaab","type":"text","text":"add title?","x":786,"y":-355,"width":250,"height":60},
 		{"id":"3979611be86a6f9c","type":"text","text":"more fun things ?","x":1066,"y":-310,"width":250,"height":60},
-		{"id":"c0a8f20c000b2eb0","x":-1060,"y":-240,"width":699,"height":640,"type":"link","url":"https://github.com/sahilmishra/sahilmishra.github.io/actions"}
+		{"id":"c0a8f20c000b2eb0","type":"link","url":"https://github.com/sahilmishra/sahilmishra.github.io/actions","x":-1060,"y":-240,"width":699,"height":640},
+		{"id":"a2693d9428949266","x":1640,"y":800,"width":1440,"height":760,"type":"link","url":"https://sahilmishra.github.io/2024/02/13/How-this-website-is-maintained.html"}
 	],
 	"edges":[
 		{"id":"e29de11021c6cbca","fromNode":"8d2d39971f13e1f7","fromSide":"left","toNode":"61a677c110e1067c","toSide":"right"},

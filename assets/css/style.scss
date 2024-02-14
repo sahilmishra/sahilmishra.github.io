@@ -3,16 +3,13 @@
 
 @import "{{ site.theme }}";
 body {
-  font-family: monospace;
   background-color: #008080;
-}
-div.wrapper {
-  min-height:300;
+  height:auto;
   margin:10em;
   border: 1px solid #000000;
   box-shadow: 5px 5px 0px 0px #000000;
   padding: 10px 0px 0px 10px;
-  background-color: #ffffff;
+  color: #ffffff;
 }
 div#bottom {
   position: absolute;
