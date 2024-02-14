@@ -10,7 +10,7 @@ author: sahil mishra
 ---
 
 <div class=content>
-![canvas for keep track of this website](/assets/Website Canvas Day 1.png)
+![canvas for keep track of this website](/assets/Website%20Canvas%20Day%201.png)
 
 I find that in a workplace environment people often don't work on live products directly they work on representations. A figma file, an ado board, a presentation. its all good, business moves fast its what's needed.
 
