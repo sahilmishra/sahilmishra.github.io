@@ -6,8 +6,9 @@ body {
   background-color: #008080;
   display: grid;
 }
-div.wrapper, .content {
-  height:auto;
+div.wrapper, .content, .status {
+  height:75vh;
+  width:90vw;
   margin:10em;
   border: 1px solid #000000;
   box-shadow: 5px 5px 0px 0px #000000;
@@ -16,7 +17,6 @@ div.wrapper, .content {
 
 
   place-self:center;
-  font-size:2vw;
   
 }
 div#bottom {
@@ -24,7 +24,7 @@ div#bottom {
 }
 
 li {
-  font-size:1.5vw;
+  font-size:4.5vw;
 }
 
 header, footer{
