@@ -14,6 +14,11 @@ div.wrapper, .content, .status {
   background-color: #ffffff;
 
   place-self:center;
+  padding:5px;
+}
+.status {
+  min-height:5vh;
+  margin:10px;
 }
 div#bottom {
   bottom: 0;
