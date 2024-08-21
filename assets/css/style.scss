@@ -4,6 +4,7 @@
 @import "{{ site.theme }}";
 body {
   background-color: #008080;
+  display: grid;
 }
 div.wrapper {
   height:auto;
@@ -12,6 +13,10 @@ div.wrapper {
   box-shadow: 5px 5px 0px 0px #000000;
   padding: 10px 10px 0px 10px;
   background-color: #ffffff;
+
+
+  place-self:center;
+  
 }
 div#bottom {
   position: absolute;
