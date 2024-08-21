@@ -9,15 +9,11 @@ body {
 div.wrapper, .content, .status {
   height:75vh;
   width:90vw;
-  margin:10em;
   border: 1px solid #000000;
   box-shadow: 5px 5px 0px 0px #000000;
-  padding: 10px 10px 0px 10px;
   background-color: #ffffff;
 
-
   place-self:center;
-  
 }
 div#bottom {
   bottom: 0;
