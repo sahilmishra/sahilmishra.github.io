@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-25 Sun 18:45 -->
+<!-- 2024-08-25 Sun 17:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>~Blog index</title>
+<title>Spotify_recs</title>
 <meta name="author" content="sahil mishra" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -193,57 +193,80 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">~Blog index</h1>
+<h1 class="title">Spotify<sub>recs</sub></h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge669349">1. 🏜 Projects</a>
-<ul>
-<li><a href="#org936dd5b">1.1. 💿 Software Meta</a>
-<ul>
-<li><a href="#org9e2bf8e">1.1.1. Thoughts and Writings</a></li>
-<li><a href="#org10dfbef">1.1.2. Personal Website</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org8edc0e4">1. The Problem:</a></li>
+<li><a href="#orgfca3ab4">2. What I&rsquo;ve Built</a></li>
+<li><a href="#orgeaa15b9">3. What it&rsquo;s made with</a></li>
+<li><a href="#org3eafa8a">4. What&rsquo;s to Come</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="../index.html">return</a>
 </p>
-<div id="outline-container-orge669349" class="outline-2">
-<h2 id="orge669349"><span class="section-number-2">1.</span> 🏜 Projects</h2>
+<div id="outline-container-org8edc0e4" class="outline-2">
+<h2 id="org8edc0e4"><span class="section-number-2">1.</span> The Problem:</h2>
 <div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>I don&rsquo;t really like Spotify&rsquo;s recommendation playlists. I have a lot of friends who find it great and then tell me how they organize their spotify. I&rsquo;ve not found great success with any of it, and what I&rsquo;ve really wanted is a way to listen to a playlist of music I&rsquo;ve certifiedly never heard. Hopefully artists that are outside of what I tend to listen to.</li>
+<li>I also don&rsquo;t want to miss popular releases, it is nice being able to recognize new music when out and about. Maybe I&rsquo;ll back down from this but being clueless doesn&rsquo;t feel great atm. I prefer unweighted recommendations.</li>
+</ul>
 </div>
-<div id="outline-container-org936dd5b" class="outline-3">
-<h3 id="org936dd5b"><span class="section-number-3">1.1.</span> 💿 <a href="software/index.html">Software Meta</a></h3>
-<div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org9e2bf8e" class="outline-4">
-<h4 id="org9e2bf8e"><span class="section-number-4">1.1.1.</span> Thoughts and Writings</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgfca3ab4" class="outline-2">
+<h2 id="orgfca3ab4"><span class="section-number-2">2.</span> What I&rsquo;ve Built</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Every month <a href="https://airtable.com/appOOBjWPUq36e83y/shreqBDcga90Jp4U8">a playlist</a> is made, it is logged into an airtable.</li>
+<li>Whenever rss feeds of music youtubers are posted to, add those albums to the latest playlist.</li>
+<li>check each album if its already been listened to.</li>
+</ul>
 </div>
-<ol class="org-ol">
-<li><a id="orgf961e5a"></a><a href="writing/nusys_rescope.html">Rescoping Nusys and Memex</a><br /></li>
-<li><a id="org202f87e"></a><a href="writing/spotify_recs.html">Spotify Playlist Maker</a><br /></li>
-</ol>
 </div>
-<div id="outline-container-org10dfbef" class="outline-4">
-<h4 id="org10dfbef"><span class="section-number-4">1.1.2.</span> <a href="software/website.html">Personal Website</a></h4>
+<div id="outline-container-orgeaa15b9" class="outline-2">
+<h2 id="orgeaa15b9"><span class="section-number-2">3.</span> What it&rsquo;s made with</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://n8n.io/">n8n</a>
+<ul class="org-ul">
+<li>I tried Activepieces and nodered but found n8n to be the simplest. In the future I may replace this with nodered but for the connections to Spotify and Airtable this fits my use.</li>
+</ul></li>
+</ul>
 </div>
+</div>
+<div id="outline-container-org3eafa8a" class="outline-2">
+<h2 id="org3eafa8a"><span class="section-number-2">4.</span> What&rsquo;s to Come</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>More sources
+<ul class="org-ul">
+<li>ideally albumoftheyear&rsquo;s new releases for a few genres</li>
+<li>random releases,
+<ul class="org-ul">
+<li>random words? to generate chaos.</li>
+</ul></li>
+</ul></li>
+<li>Tune rates, at the moment only at most 2 albums a day are added</li>
+<li><a href="https://airtable.com/appOOBjWPUq36e83y/shraKXk0xaEL3uUG2">Airtable</a> -&gt; Local sqlite, mysql, postgres
+<ul class="org-ul">
+<li>I can show ppl a fun airtable but I don&rsquo;t know if having an always online hosted table is necessary.</li>
+</ul></li>
+<li>solar power??</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sahil mishra</p>
-<p class="date">Created: 2024-08-25 Sun 18:45</p>
+<p class="date">Created: 2024-08-25 Sun 17:48</p>
 </div>
 </body>
 </html>
