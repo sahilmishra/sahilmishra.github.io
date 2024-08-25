@@ -7,13 +7,18 @@ body {
   display: grid;
 }
 div.wrapper, .content, .status {
-  min-height:75vh;
-  min-width:90vw;
+  min-height:50vh;
+  min-width:82vw;
   border: 1px solid #000000;
   box-shadow: 5px 5px 0px 0px #000000;
   background-color: #ffffff;
 
   place-self:center;
+  padding:5px;
+}
+.status {
+  min-height:5vh;
+  margin:10px;
 }
 div#bottom {
   bottom: 0;
