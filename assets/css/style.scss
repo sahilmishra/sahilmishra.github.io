@@ -5,6 +5,7 @@
 body {
   background-color: #008080;
   display: grid;
+  padding-top:20px
 }
 div.wrapper, .content, .status {
   min-height:50vh;
@@ -23,6 +24,7 @@ div.wrapper, .content, .status {
 }
 div#bottom {
   bottom: 0;
+  padding-top:20px;
 }
 h1{
   font-size:4.5vw;
