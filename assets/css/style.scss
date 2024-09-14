@@ -5,7 +5,8 @@
 body {
   background-color: #008080;
   display: grid;
-  padding-top:20px
+  padding-top:20px;
+  overflow-x:hidden;
 }
 div.wrapper, .content, .status {
   min-height:50vh;
