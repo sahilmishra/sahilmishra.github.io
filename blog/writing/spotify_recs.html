@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-01 Sun 20:41 -->
+<!-- 2024-09-20 Fri 11:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spotify_recs</title>
-<meta name="author" content="sahil mishra" />
+<meta name="author" content="sahilm" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -202,10 +202,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3063b71">1. The Problem:</a></li>
-<li><a href="#org079bbb5">2. What I&rsquo;ve Built</a></li>
-<li><a href="#orgb65fcda">3. What it&rsquo;s made with</a></li>
-<li><a href="#orgbf0cd91">4. What&rsquo;s to Come</a></li>
+<li><a href="#org514783d">1. The Problem:</a></li>
+<li><a href="#orgeb9d84d">2. What I&rsquo;ve Built</a></li>
+<li><a href="#org52b028c">3. What it&rsquo;s made with</a></li>
+<li><a href="#org49b4ab0">4. What&rsquo;s to Come</a></li>
+<li><a href="#org05ed34b">5. todo list</a>
+<ul>
+<li><a href="#orga2f111a">5.1. <span class="todo TODO">TODO</span> lookup aoty robot.txt to see if its allowed</a></li>
+<li><a href="#org8d75620">5.2. <span class="todo TODO">TODO</span> Figure out event for spotify song change</a>
+<ul>
+<li><a href="#org3f3e496">5.2.1. n8n can poll what is being played but no event for new currently playing song</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -217,8 +227,8 @@
 <p>
 <a href="../index.html">return</a>
 </p>
-<div id="outline-container-org3063b71" class="outline-2">
-<h2 id="org3063b71"><span class="section-number-2">1.</span> The Problem:</h2>
+<div id="outline-container-org514783d" class="outline-2">
+<h2 id="org514783d"><span class="section-number-2">1.</span> The Problem:</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>I don&rsquo;t really like Spotify&rsquo;s recommendation playlists. I have a lot of friends who find it great and then tell me how they organize their spotify. I&rsquo;ve not found great success with any of it, and what I&rsquo;ve really wanted is a way to listen to a playlist of music I&rsquo;ve certifiedly never heard. Hopefully artists that are outside of what I tend to listen to.</li>
@@ -226,8 +236,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org079bbb5" class="outline-2">
-<h2 id="org079bbb5"><span class="section-number-2">2.</span> What I&rsquo;ve Built</h2>
+<div id="outline-container-orgeb9d84d" class="outline-2">
+<h2 id="orgeb9d84d"><span class="section-number-2">2.</span> What I&rsquo;ve Built</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Every month <a href="https://airtable.com/appOOBjWPUq36e83y/shreqBDcga90Jp4U8">a playlist</a> is made, it is logged into an airtable.</li>
@@ -253,8 +263,8 @@ The playlist kinda sucks atm but i&rsquo;ll fine tune and add sources as I go
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb65fcda" class="outline-2">
-<h2 id="orgb65fcda"><span class="section-number-2">3.</span> What it&rsquo;s made with</h2>
+<div id="outline-container-org52b028c" class="outline-2">
+<h2 id="org52b028c"><span class="section-number-2">3.</span> What it&rsquo;s made with</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><a href="https://n8n.io/">n8n</a> running on homeserver in local network
@@ -265,8 +275,8 @@ The playlist kinda sucks atm but i&rsquo;ll fine tune and add sources as I go
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf0cd91" class="outline-2">
-<h2 id="orgbf0cd91"><span class="section-number-2">4.</span> What&rsquo;s to Come</h2>
+<div id="outline-container-org49b4ab0" class="outline-2">
+<h2 id="org49b4ab0"><span class="section-number-2">4.</span> What&rsquo;s to Come</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>More sources
@@ -276,9 +286,10 @@ The playlist kinda sucks atm but i&rsquo;ll fine tune and add sources as I go
 <ul class="org-ul">
 <li>random words? to generate chaos.</li>
 </ul></li>
+<li>When I listen to a song from shuffle, check the list and add an album to playlist</li>
 </ul></li>
 <li>Tune rates, at the moment only at most 2 albums a day are added</li>
-<li><a href="https://airtable.com/appOOBjWPUq36e83y/shraKXk0xaEL3uUG2">Airtable</a> -&gt; Local sqlite, mysql, postgres
+<li><a href="https://airtable.com/appOOBjWPUq36e83y/shraKXk0xaEL3uUG2">Airtable</a> ➡ Local sqlite, mysql, postgres
 <ul class="org-ul">
 <li>I can show ppl a fun airtable but I don&rsquo;t know if having an always online hosted table is necessary.</li>
 </ul></li>
@@ -286,10 +297,26 @@ The playlist kinda sucks atm but i&rsquo;ll fine tune and add sources as I go
 </ul>
 </div>
 </div>
+<div id="outline-container-org05ed34b" class="outline-2">
+<h2 id="org05ed34b"><span class="section-number-2">5.</span> todo list</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orga2f111a" class="outline-3">
+<h3 id="orga2f111a"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> lookup aoty robot.txt to see if its allowed</h3>
+</div>
+<div id="outline-container-org8d75620" class="outline-3">
+<h3 id="org8d75620"><span class="section-number-3">5.2.</span> <span class="todo TODO">TODO</span> Figure out event for spotify song change</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org3f3e496" class="outline-4">
+<h4 id="org3f3e496"><span class="section-number-4">5.2.1.</span> n8n can poll what is being played but no event for new currently playing song</h4>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: sahil mishra</p>
-<p class="date">Created: 2024-09-01 Sun 20:41</p>
+<p class="author">Author: sahilm</p>
+<p class="date">Created: 2024-09-20 Fri 11:01</p>
 </div>
 </body>
 </html>
