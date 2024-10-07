@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-07 Mon 17:05 -->
+<!-- 2024-10-07 Mon 17:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Weather agenda</title>
@@ -202,10 +202,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgae8178e">1. Why</a></li>
-<li><a href="#orgbe7f3c9">2. How</a></li>
-<li><a href="#org949f9ce">3. What</a></li>
-<li><a href="#org574dabc">4. Next</a></li>
+<li><a href="#orge5519e7">1. Why</a></li>
+<li><a href="#org95b5765">2. How</a></li>
+<li><a href="#orgc15ebf6">3. What</a></li>
+<li><a href="#orgddc9e2f">4. Next</a></li>
 </ul>
 </div>
 </div>
@@ -218,16 +218,16 @@
 <p>
 <a href="../index.html">return</a>
 </p>
-<div id="outline-container-orgae8178e" class="outline-2">
-<h2 id="orgae8178e"><span class="section-number-2">1.</span> Why</h2>
+<div id="outline-container-orge5519e7" class="outline-2">
+<h2 id="orge5519e7"><span class="section-number-2">1.</span> Why</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I like my paper calendar for the time being, I can write in events and its in a persistent spot that I know to check. I have a harder time getting my bearings in digital tools, but the ability to have things automatically show up when needed is something I want to mash together with my paper calendar. I don&rsquo;t use my kindle paperwhite anymore, it was great for commuting, and wanted to put some new use to it. The initial idea was to show the weather and anything else I may need could be automatically shown as needed, think packages, agenda etc. I have for the time being settled on just showing my <a href="https://orgmode.org/">org mode agenda</a> and a weather forecast.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbe7f3c9" class="outline-2">
-<h2 id="orgbe7f3c9"><span class="section-number-2">2.</span> How</h2>
+<div id="outline-container-org95b5765" class="outline-2">
+<h2 id="org95b5765"><span class="section-number-2">2.</span> How</h2>
 <div class="outline-text-2" id="text-2">
 <div style="white-space:pre-wrap; font-family:monospace;font-size:min(2vw,1em);">
  ┌───────────────────────────────────────────┐
@@ -247,8 +247,8 @@ I like my paper calendar for the time being, I can write in events and its in a 
  </div>
 </div>
 </div>
-<div id="outline-container-org949f9ce" class="outline-2">
-<h2 id="org949f9ce"><span class="section-number-2">3.</span> What</h2>
+<div id="outline-container-orgc15ebf6" class="outline-2">
+<h2 id="orgc15ebf6"><span class="section-number-2">3.</span> What</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 This was initially a jekyll project via docker compose &lt;-&gt; jenkins but this proved to be difficult to do considering the permissions of all involved.
@@ -262,7 +262,7 @@ I have opted to run a systemd service with the go webserver executable and run a
 Here is a nixos snippet for what I used to up the process:
 </p>
 <div class="org-src-container">
-<pre class="src src-nix" id="orgd2e6ffc">      systemd.timers."agenda" = {
+<pre class="src src-nix" id="org2ef2c53">      systemd.timers."agenda" = {
 		wantedBy = [ "timers.target" ];
 		timerConfig = {
 			OnBootSec = "5m";
@@ -300,10 +300,10 @@ The webserver responds on index to serve the main page, and replaces a div conta
 </p>
 
 
-<div id="orgcbf172f" class="figure">
+<div id="org44ea34a" class="figure">
 <p><img src="../../assets/agenda.jpg" alt="kindle with agenda" title="Action!" align="center" />
 </p>
-<p><span class="figure-number">Figure 1: </span>A photo of a kindle paperwhite displaying the weather and my agenda</p>
+<p><span class="figure-number">Figure 1: </span>A photo of a kindle paperwhite displaying the weather and my agenda, the animations don&rsquo;t fully work but I like them</p>
 </div>
 
 
@@ -312,8 +312,8 @@ It&rsquo;s very simple at the moment but because of how it is setup it is a full
 </p>
 </div>
 </div>
-<div id="outline-container-org574dabc" class="outline-2">
-<h2 id="org574dabc"><span class="section-number-2">4.</span> Next</h2>
+<div id="outline-container-orgddc9e2f" class="outline-2">
+<h2 id="orgddc9e2f"><span class="section-number-2">4.</span> Next</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Package tracking
@@ -338,7 +338,7 @@ It&rsquo;s very simple at the moment but because of how it is setup it is a full
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sahilm</p>
-<p class="date">Created: 2024-10-07 Mon 17:05</p>
+<p class="date">Created: 2024-10-07 Mon 17:07</p>
 </div>
 </body>
 </html>
