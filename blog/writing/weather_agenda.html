@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-07 Mon 15:21 -->
+<!-- 2024-10-07 Mon 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sahil Mishra's Personal Website</title>
+<title>Weather agenda</title>
 <meta name="author" content="sahilm" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -193,34 +193,143 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+24+Charted&display=swap" rel="stylesheet">
-<style> @import url('https://fonts.googleapis.com/css2?family=Jacquard+24+Charted&display=swap'); </style>
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Sahil Mishra&rsquo;s Personal Website</h1>
+<h1 class="title">Weather agenda</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8b2b1ef">1. Why</a></li>
+<li><a href="#orgfe6502e">2. How</a></li>
+<li><a href="#org8db7774">3. What</a></li>
+<li><a href="#org75eebf3">4. Next</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../index.html">all the way back</a>
+</p>
 
-<center>
-  <img src="assets/sahil.gif" alt="A Glitchy photo of me made years ago" style="width:150px;"></center>
+
+<br/>
+<p>
+<a href="file:///home/civic/Blog/index.html">return</a>
+</p>
+<div id="outline-container-org8b2b1ef" class="outline-2">
+<h2 id="org8b2b1ef"><span class="section-number-2">1.</span> Why</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I like my paper calendar for the time being, I can write in events and its in a persistent spot that I know to check. I have a harder time getting my bearings in digital tools, but the ability to have things automatically show up when needed is something I want to mash together with my paper calendar. I don&rsquo;t use my kindle paperwhite anymore, it was great for commuting, and wanted to put some new use to it. The initial idea was to show the weather and anything else I may need could be automatically shown as needed, think packages, agenda etc. I have for the time being settled on just showing my <a href="https://orgmode.org/">org mode agenda</a> and a weather forecast.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfe6502e" class="outline-2">
+<h2 id="orgfe6502e"><span class="section-number-2">2.</span> How</h2>
+<div class="outline-text-2" id="text-2">
+<div style="white-space:pre-wrap; font-family:monospace;font-size:min(2vw,1em);">
+ ┌───────────────────────────────────────────┐
+ │                   Home server             │
+ │                      │                    │
+ │                      │                    │
+ │   systemd timer ◄────┴─► Go Webserver     │          ┌─────────────────┐
+ │          │                │               │    ┌────►│     kindle      │
+ │          │ 5m timer       ├─►/index.html ─┼────┘     │                 │
+ │          ▼                │               │          │   web browser   │
+ │   agenda.service          └─►/agenda.txt◄─┼──────────┴─────────────────┘
+ │         │                    ▲            │   90s
+ │         │   writes           │            │  timer
+ │         │                    │            │  htmx
+ │         └────────────────────┘            │
+ └───────────────────────────────────────────┘
+ </div>
+</div>
+</div>
+<div id="outline-container-org8db7774" class="outline-2">
+<h2 id="org8db7774"><span class="section-number-2">3.</span> What</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This was initially a jekyll project via docker compose &lt;-&gt; jenkins but this proved to be difficult to do considering the permissions of all involved.
+</p>
+
+<p>
+I have opted to run a systemd service with the go webserver executable and run a systemd timer(cron is deprecated in NixOS) to run an emacs command to update my agenda.
+</p>
+
+<p>
+Here is a nixos snippet for what I used to up the process:
+</p>
+<div class="org-src-container">
+<pre class="src src-nix" id="org5513f02">      systemd.timers."agenda" = {
+		wantedBy = [ "timers.target" ];
+		timerConfig = {
+			OnBootSec = "5m";
+			OnUnitActiveSec = "5m";
+			Unit = "agenda.service";
+		};
+	};
+
+	systemd.services."agenda" = {
+		path = with pkgs; [ emacs git];
+		script = ''
+			emacs -l /home/sahilm/.emacs -batch  -eval '(org-batch-agenda "a" org-agenda-span (quote day))' &gt; /your/webserver/directory/agenda.txt
+			'';
+		serviceConfig = {
+			Type = "oneshot";
+			User = "root";
+		};
+	};
+
+	systemd.services.kindlego = {
+		enable = true;
+		wantedBy = [ "multi-user.target" ];
+		after = [ "network.target" ];
+		serviceConfig = {
+			WorkingDirectory = "/your/webserver/directory/";
+			User = "your_username";
+			ExecStart = "/your/webserver/directory/binary";
+		};
+	};
+</pre>
+</div>
+
+<p>
+The webserver responds on index to serve the main page, and replaces a div containing the agenda with an htmx swap periodically.
+</p>
+
+
+<div id="org47b1be9" class="figure">
+<p><img src="../../assets/agenda.jpg" alt="kindle with agenda" title="Action!" align="center" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A photo of a kindle paperwhite displaying the weather and my agenda</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org75eebf3" class="outline-2">
+<h2 id="org75eebf3"><span class="section-number-2">4.</span> Next</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li><a href="blog/">Select Notes From my notebook</a></li>
-<li>What I&rsquo;ve worked on:
+<li>Package tracking
 <ul class="org-ul">
-<li><a href="https://github.com/sahilkmishra">Github</a></li>
-<li><a href="blog/writing/spotify_recs.html">💽 Spotify Playlist Maker 08/&rsquo;24</a></li>
-<li>UMass Amherst &rsquo;20</li>
-<li><a href="https://www.eguard.us/">🛡 eGuard /&rsquo;17-18</a></li>
-<li><a href="http://ptc.cs.brown.edu/#/project/dash">🕸 Dash FKA Nusys &rsquo;15-17</a></li>
-<li><a href="https://www.linkedin.com/in/sahil-m-65715889/">🖇 Linkedin</a></li>
+<li>text alerts are fine</li>
+</ul></li>
+<li>Sync Google Calendar
+<ul class="org-ul">
+<li>helpful but I don&rsquo;t use google calendar for much</li>
+</ul></li>
+<li>Interactive agenda
+<ul class="org-ul">
+<li>should be doable via emacs eval and htmx -&gt; go server</li>
 </ul></li>
 </ul>
 </div>
+</div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: sahilm</p>
-<p class="date">Created: 2024-10-07 Mon 15:21</p>
+<p class="date">Created: 2024-10-07 Mon 16:25</p>
 </div>
 </body>
 </html>
