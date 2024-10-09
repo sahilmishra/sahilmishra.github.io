@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-08 Tue 19:56 -->
+<!-- 2024-10-09 Wed 11:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Weather agenda</title>
@@ -20,10 +20,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga7d53bd">1. Why</a></li>
-<li><a href="#org7f2ad66">2. How</a></li>
-<li><a href="#orgc78dbe7">3. What</a></li>
-<li><a href="#org8c80181">4. Next</a></li>
+<li><a href="#orga1e590c">1. Why</a></li>
+<li><a href="#orgb8fc2c4">2. How</a></li>
+<li><a href="#org3bf4ee8">3. What</a></li>
+<li><a href="#orge08308f">4. Next</a></li>
 </ul>
 </div>
 </div>
@@ -36,16 +36,16 @@
 <p>
 <a href="../index.html">return</a>
 </p>
-<div id="outline-container-orga7d53bd" class="outline-2">
-<h2 id="orga7d53bd"><span class="section-number-2">1.</span> Why</h2>
+<div id="outline-container-orga1e590c" class="outline-2">
+<h2 id="orga1e590c"><span class="section-number-2">1.</span> Why</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I like my paper calendar for the time being, I can write in events and its in a persistent spot that I know to check. I have a harder time getting my bearings in digital tools, but the ability to have things automatically show up when needed is something I want to mash together with my paper calendar. I don&rsquo;t use my kindle paperwhite anymore, it was great for commuting, and wanted to put some new use to it. The initial idea was to show the weather and anything else I may need could be automatically shown as needed, think packages, agenda etc. I have for the time being settled on just showing my <a href="https://orgmode.org/">org mode agenda</a> and a weather forecast.
 </p>
 </div>
 </div>
-<div id="outline-container-org7f2ad66" class="outline-2">
-<h2 id="org7f2ad66"><span class="section-number-2">2.</span> How</h2>
+<div id="outline-container-orgb8fc2c4" class="outline-2">
+<h2 id="orgb8fc2c4"><span class="section-number-2">2.</span> How</h2>
 <div class="outline-text-2" id="text-2">
 <div style="white-space:pre-wrap; font-family:monospace;font-size:min(1.8vw,1em);">
  ┌───────────────────────────────────────────┐
@@ -65,8 +65,8 @@ I like my paper calendar for the time being, I can write in events and its in a 
  </div>
 </div>
 </div>
-<div id="outline-container-orgc78dbe7" class="outline-2">
-<h2 id="orgc78dbe7"><span class="section-number-2">3.</span> What</h2>
+<div id="outline-container-org3bf4ee8" class="outline-2">
+<h2 id="org3bf4ee8"><span class="section-number-2">3.</span> What</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 This was initially a jekyll project via docker compose &lt;-&gt; jenkins but this proved to be difficult to do considering the permissions of all involved. This result is also way faster and has a much smaller file footprint. Jekyll fits my needs for this site, but for any personal project that&rsquo;s more complex I think GO+HTMX is a clear winner for me.
@@ -80,7 +80,7 @@ I have opted to run a systemd service with the go webserver executable and run a
 Here is a nixos snippet for what I used to up the process:
 </p>
 <div class="org-src-container">
-<pre class="src src-nix" id="org4475749">      systemd.timers."agenda" = {
+<pre class="src src-nix" id="org7bba47f">      systemd.timers."agenda" = {
 		wantedBy = [ "timers.target" ];
 		timerConfig = {
 			OnBootSec = "5m";
@@ -92,7 +92,7 @@ Here is a nixos snippet for what I used to up the process:
 	systemd.services."agenda" = {
 		path = with pkgs; [ emacs git];
 		script = ''
-			emacs -l /home/sahilm/.emacs -batch  -eval '(org-batch-agenda "a" org-agenda-span (quote day))' &gt; /your/webserver/directory/agenda.txt
+			emacs -l /home/youruser/.emacs -batch  -eval '(org-batch-agenda "a" org-agenda-span (quote day))' &gt; /your/webserver/directory/agenda.txt
 			'';
 		serviceConfig = {
 			Type = "oneshot";
@@ -118,7 +118,7 @@ The webserver responds on index to serve the main page, and replaces a div conta
 </p>
 
 
-<div id="orgeb28083" class="figure">
+<div id="orgc14014e" class="figure">
 <p><img src="../../assets/agenda.jpg" alt="kindle with agenda" title="My Agenda!" align="center" style="object-fit: contain;width:min(350px,70vw);" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A photo of a kindle paperwhite displaying the weather and my agenda, the animations don&rsquo;t fully work but I like them</p>
@@ -130,8 +130,8 @@ It&rsquo;s very simple at the moment but because of how it is setup it is a full
 </p>
 </div>
 </div>
-<div id="outline-container-org8c80181" class="outline-2">
-<h2 id="org8c80181"><span class="section-number-2">4.</span> Next</h2>
+<div id="outline-container-orge08308f" class="outline-2">
+<h2 id="orge08308f"><span class="section-number-2">4.</span> Next</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Package tracking
@@ -156,7 +156,7 @@ It&rsquo;s very simple at the moment but because of how it is setup it is a full
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sahilm</p>
-<p class="date">Created: 2024-10-08 Tue 19:56</p>
+<p class="date">Created: 2024-10-09 Wed 11:37</p>
 </div>
 </body>
 </html>
