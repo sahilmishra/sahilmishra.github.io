@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-10 Thu 11:24 -->
+<!-- 2024-10-10 Thu 11:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Plasticity</title>
@@ -202,8 +202,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org981c020">1. What</a></li>
-<li><a href="#orgd581d6c">2. The Fix</a></li>
+<li><a href="#orge9c2a7b">1. What</a></li>
+<li><a href="#org6667eb7">2. The Fix</a></li>
 </ul>
 </div>
 </div>
@@ -215,11 +215,11 @@
 <br/>
 
 <p>
-<a href="file:///home/civic/Blog/index.html">return</a>
+<a href="../../index.html">return</a>
 </p>
 
-<div id="outline-container-org981c020" class="outline-2">
-<h2 id="org981c020"><span class="section-number-2">1.</span> What</h2>
+<div id="outline-container-orge9c2a7b" class="outline-2">
+<h2 id="orge9c2a7b"><span class="section-number-2">1.</span> What</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I had initially bought a license for plasticity under the guise that I would not need to keep paying for it, this is true but your license dictates a max version number, I have the Indie 1.0 License and my latetst version is 1.4.20. For OSx or Windows, you would just download the <a href="https://github.com/nkallen/plasticity/releases">right release</a>, but for NixOS you need to pin the version. I found that the version attribute is not enough to fix this and the url and hash need to be adjusted as well.
@@ -227,14 +227,14 @@ I had initially bought a license for plasticity under the guise that I would not
 </div>
 </div>
 
-<div id="outline-container-orgd581d6c" class="outline-2">
-<h2 id="orgd581d6c"><span class="section-number-2">2.</span> The Fix</h2>
+<div id="outline-container-org6667eb7" class="outline-2">
+<h2 id="org6667eb7"><span class="section-number-2">2.</span> The Fix</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 This fragment works for me, if you have access to a different version change the url and let the hash error out. Replace it with the value nixos-rebuild switch tells you.
 </p>
 <div class="org-src-container">
-<pre class="src src-nix" id="org3bcbc3f">environment.systemPackages = [
+<pre class="src src-nix" id="org5c5e7b0">environment.systemPackages = [
   (plasticity.overrideAttrs {
             version = "1.4.20";
             src = fetchurl {
@@ -254,7 +254,7 @@ To a Nix veteran you already know this, but if you&rsquo;re new this is somethin
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sahilm</p>
-<p class="date">Created: 2024-10-10 Thu 11:24</p>
+<p class="date">Created: 2024-10-10 Thu 11:25</p>
 </div>
 </body>
 </html>
