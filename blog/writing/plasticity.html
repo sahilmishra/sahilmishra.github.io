@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-10 Thu 11:20 -->
+<!-- 2024-10-10 Thu 11:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>~Blog index</title>
+<title>Plasticity</title>
 <meta name="author" content="sahilm" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -193,70 +193,64 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">~Blog index</h1>
+<h1 class="title">Plasticity</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfe5e09d">1. 🏜 Projects</a>
-<ul>
-<li><a href="#orgba76d40">1.1. 🎽 Clothes meta</a>
-<ul>
-<li><a href="#org4633595">1.1.1. 👕 Quest for Perfect T</a></li>
-</ul>
-</li>
-<li><a href="#org3db56a5">1.2. 💿 Software Meta</a>
-<ul>
-<li><a href="#org21a7ccf">1.2.1. 💭 Thoughts and Writings</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org259a65b">1. What</a></li>
+<li><a href="#org6a66ae2">2. The Fix</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="../index.html">return</a>
+<a href="../../index.html">all the way back</a>
 </p>
-<div id="outline-container-orgfe5e09d" class="outline-2">
-<h2 id="orgfe5e09d"><span class="section-number-2">1.</span> 🏜 Projects</h2>
+
+
+<br/>
+
+<p>
+<a href="file:///home/civic/Blog/index.html">return</a>
+</p>
+
+<div id="outline-container-org259a65b" class="outline-2">
+<h2 id="org259a65b"><span class="section-number-2">1.</span> What</h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-orgba76d40" class="outline-3">
-<h3 id="orgba76d40"><span class="section-number-3">1.1.</span> <a href="clothes/index.html">🎽 Clothes meta</a></h3>
-<div class="outline-text-3" id="text-1-1">
-</div>
-<div id="outline-container-org4633595" class="outline-4">
-<h4 id="org4633595"><span class="section-number-4">1.1.1.</span> <a href="clothes/tee.html">👕 Quest for Perfect T</a></h4>
+<p>
+I had initially bought a license for plasticity under the guise that I would not need to keep paying for it, this is true but your license dictates a version number, I have the Indie 1.0 License and my latetst version is 1.4.20. For OSx or Windows, you would just download the <a href="https://github.com/nkallen/plasticity/releases">right release</a>, but for NixOS you need to pin the version. I found that the version attribute is not enough to fix this and the url and hash need to be adjusted as well.
+</p>
 </div>
 </div>
-<div id="outline-container-org3db56a5" class="outline-3">
-<h3 id="org3db56a5"><span class="section-number-3">1.2.</span> <a href="software/index.html">💿 Software Meta</a></h3>
-<div class="outline-text-3" id="text-1-2">
-</div>
-<div id="outline-container-org21a7ccf" class="outline-4">
-<h4 id="org21a7ccf"><span class="section-number-4">1.2.1.</span> 💭 Thoughts and Writings</h4>
-<div class="outline-text-4" id="text-1-2-1">
-<ol class="org-ol">
-<li><a href="writing/nusys_rescope.html">🔭 Rescoping Nusys and Memex</a></li>
-<li><a href="writing/spotify_recs.html">💽 Spotify Playlist Maker</a>  ◀ Interactive</li>
-<li><a href="writing/my_preference_on_note_taking.html">📓 My Preferences on Note Taking</a></li>
-<li><a href="writing/docker.html">🐋 Converting My Docker Containers to OCI/Nix/Podman</a></li>
-<li><a href="writing/weather_agenda.html">🌪 EPaper Hypermedia Weather/Agenda</a></li>
-<li><a href="writing/plasticity.html">✏ Plasticity Liscencing and versioning in NixOS</a></li>
-</ol>
-</div>
+
+<div id="outline-container-org6a66ae2" class="outline-2">
+<h2 id="org6a66ae2"><span class="section-number-2">2.</span> The Fix</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This fragment works for me, if you have access to a different version change the url and let the hash error out. Replace it with the value nix switch tells you.
+</p>
+<div class="org-src-container">
+<pre class="src src-nix" id="orgd9e59ea">environment.systemPackages = [
+  (plasticity.overrideAttrs {
+            version = "1.4.20";
+            src = fetchurl {
+                url = "https://github.com/nkallen/plasticity/releases/download/v1.4.20/Plasticity-1.4.20-1.x86_64.rpm";
+                hash = "sha256-i2n35UmRSEtkaPvJDPC2imYqgIx+qKu4bOaarYl9qQQ=";
+            };
+        })
+];
+</pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sahilm</p>
-<p class="date">Created: 2024-10-10 Thu 11:20</p>
+<p class="date">Created: 2024-10-10 Thu 11:19</p>
 </div>
 </body>
 </html>
