@@ -9,10 +9,11 @@ body {
   
   color: light-dark(#333b3c, #999);
   background-color: light-dark(#008080, #000);
-  display: grid;
+  display: flex;
   padding-top:20px;
   overflow-x:hidden;
   overflow-y: scroll;
+
 }
 div.wrapper, #content, .status {
   min-height:50vh;
