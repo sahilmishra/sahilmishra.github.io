@@ -14,9 +14,10 @@ body {
   overflow-x:hidden;
   overflow-y: scroll;
 }
-div.wrapper, .content, .status {
+div.wrapper, #content, .status {
   min-height:50vh;
-  min-width:82vw;
+  //min-width:40vw;
+  max-width:min(100%,82vw);
   border: 1px solid #000000;
   box-shadow: 5px 5px 0px 0px #111;
   background-color: light-dark(#ffffff, #222);

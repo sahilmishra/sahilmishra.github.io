@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-10-09 Wed 12:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Weather agenda</title>
+<meta name="author" content="sahilm" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
+<style>.title  { text-align: center; margin-bottom: .2em; }</style>
+<style>#content  { max-width: min(90vw,60em);  }</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Weather agenda</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb4c5153">1. Why</a></li>
+<li><a href="#org8d823ac">2. How</a></li>
+<li><a href="#org1650834">3. What</a></li>
+<li><a href="#org97c5ae6">4. Next</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../index.html">all the way back</a>
+</p>
+
+
+<br/>
+<p>
+<a href="../index.html">return</a>
+</p>
+<div id="outline-container-orgb4c5153" class="outline-2">
+<h2 id="orgb4c5153"><span class="section-number-2">1.</span> Why</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I like my paper calendar for the time being, I can write in events and its in a persistent spot that I know to check. I have a harder time getting my bearings in digital tools, but the ability to have things automatically show up when needed is something I want to mash together with my paper calendar. I don&rsquo;t use my kindle paperwhite anymore, it was great for commuting, and wanted to put some new use to it. The initial idea was to show the weather and anything else I may need could be automatically shown as needed, think packages, agenda etc. I have for the time being settled on just showing my <a href="https://orgmode.org/">org mode agenda</a> and a weather forecast.
+</p>
+</div>
+</div>
+<div id="outline-container-org8d823ac" class="outline-2">
+<h2 id="org8d823ac"><span class="section-number-2">2.</span> How</h2>
+<div class="outline-text-2" id="text-2">
+<div style="white-space:pre-wrap; font-family:monospace;font-size:min(1.6vw,1em);">
+ ┌───────────────────────────────────────────┐
+ │                   Home server             │
+ │                      │                    │
+ │                      │                    │
+ │   systemd timer ◄────┴─► Go Webserver     │          ┌─────────────────┐
+ │          │                │               │    ┌────►│     kindle      │
+ │          │ 5m timer       ├─►/index.html ─┼────┘     │                 │
+ │          ▼                │               │          │   web browser   │
+ │   agenda.service          └─►/agenda.txt◄─┼──────────┴─────────────────┘
+ │         │                    ▲            │   90s
+ │         │   writes           │            │  timer
+ │         │                    │            │  htmx
+ │         └────────────────────┘            │
+ └───────────────────────────────────────────┘
+ </div>
+</div>
+</div>
+<div id="outline-container-org1650834" class="outline-2">
+<h2 id="org1650834"><span class="section-number-2">3.</span> What</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This was initially a jekyll project via docker compose &lt;-&gt; jenkins but this proved to be difficult to do considering the permissions of all involved. This result is also way faster and has a much smaller file footprint. Jekyll fits my needs for this site, but for any personal project that&rsquo;s more complex I think GO+HTMX is a clear winner for me.
+</p>
+
+<p>
+I have opted to run a systemd service with the go webserver executable and run a systemd timer(cron is deprecated in NixOS) to run an emacs command to update my agenda. This is exposed to my local network which is where my kindle accesses it. I considered putting it on the internet and putting a password on it but I don&rsquo;t plan to use this out of my local network.
+</p>
+
+<p>
+Here is a nixos snippet for what I used to up the process:
+</p>
+<div class="org-src-container">
+<pre class="src src-nix" id="org15f8a70">      systemd.timers."agenda" = {
+		wantedBy = [ "timers.target" ];
+		timerConfig = {
+			OnBootSec = "5m";
+			OnUnitActiveSec = "5m";
+			Unit = "agenda.service";
+		};
+	};
+
+	systemd.services."agenda" = {
+		path = with pkgs; [ emacs git];
+		script = ''
+			emacs -l /home/youruser/.emacs -batch  -eval '(org-batch-agenda "a" org-agenda-span (quote day))' &gt; /your/webserver/directory/agenda.txt
+			'';
+		serviceConfig = {
+			Type = "oneshot";
+			User = "root";
+		};
+	};
+
+	systemd.services.kindlego = {
+		enable = true;
+		wantedBy = [ "multi-user.target" ];
+		after = [ "network.target" ];
+		serviceConfig = {
+			WorkingDirectory = "/your/webserver/directory/";
+			User = "your_username";
+			ExecStart = "/your/webserver/directory/binary";
+		};
+	};
+</pre>
+</div>
+
+<p>
+The webserver responds on index to serve the main page, and replaces a div containing the agenda with an htmx swap periodically.
+</p>
+
+
+<div id="orga2f7428" class="figure">
+<p><img src="../../assets/agenda.jpg" alt="kindle with agenda" title="My Agenda!" align="center" style="object-fit: contain;width:min(350px,70vw);" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A photo of a kindle paperwhite displaying the weather and my agenda, the animations don&rsquo;t fully work but I like them</p>
+</div>
+
+
+<p>
+It&rsquo;s very simple at the moment but because of how it is setup it is a fully fledged <a href="https://en.wikipedia.org/wiki/Hypermedia">hypermedia document</a>, meaning I can simply add new services as routes, and display them as a part of the original document.
+</p>
+</div>
+</div>
+<div id="outline-container-org97c5ae6" class="outline-2">
+<h2 id="org97c5ae6"><span class="section-number-2">4.</span> Next</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Package tracking
+<ul class="org-ul">
+<li>text alerts are fine</li>
+</ul></li>
+<li>Sync Google Calendar
+<ul class="org-ul">
+<li>helpful but I don&rsquo;t use google calendar for much</li>
+</ul></li>
+<li>Interactive agenda
+<ul class="org-ul">
+<li>should be doable via emacs eval and htmx -&gt; go server</li>
+</ul></li>
+<li>Wall mounted holder
+<ul class="org-ul">
+<li>ceramic or plastic 3d printed is what I am considering</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sahilm</p>
+<p class="date">Created: 2024-10-09 Wed 12:32</p>
+</div>
+</body>
+</html>
